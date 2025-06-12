@@ -3,12 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
+#include "Gimmick.h"
 #include "EmergencyBell.generated.h"
 
 
 UCLASS()
-class DUNGEONSTATION_API AEmergencyBell : public AActor
+class DUNGEONSTATION_API AEmergencyBell : public AGimmick
 {
 	GENERATED_BODY()
 	
