@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\Users\\Jungle\\Documents\\Unreal Projects\\AgentOfDungeonStation\\Source\\DungeonStation\\DungeonStation.Build.cs",
+		"C:\\Users\\Jungle\\Documents\\Unreal Projects\\AgentOfDungeonStation\\Source\\DungeonStation.Target.cs",
+		"C:\\Users\\Jungle\\Documents\\Unreal Projects\\AgentOfDungeonStation\\Source\\DungeonStationEditor.Target.cs"
+	],
+	"EngineVersion": "5.5.4"
+}
