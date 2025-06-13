@@ -31,3 +31,8 @@ void ATrainManager::Tick(float DeltaTime)
 
 }
 
+void ATrainManager::ClearStage()
+{
+	bClearStage = true;
+}
+

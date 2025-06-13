@@ -27,13 +27,19 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public:
-	UPROPERTY(EditAnywhere)
-	TArray<AGimmick*> Gimmicks;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UBoxComponent* StartTrigger;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	float AccTime = 0.0;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bClearStage = false;
+private: 
+
+
+public:
+	bool GetClearStage() { return bClearStage; }
+	UFUNCTION(BlueprintCallable, Category = "Stage")
+	void ClearStage();
 };
