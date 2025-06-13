@@ -1,0 +1,123 @@
+# ==== Visual Studio / IDE ====
+.vscode/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.VC.opendb
+
+# Rider / JetBrains
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ==== Unreal Engine ====
+# Binaries, Build, Intermediate 폴더
+Binaries/*
+DerivedDataCache/*
+Intermediate/*
+Saved/*
+Build/*
+
+# 자동 생성된 프로젝트 파일
+*.xcodeproj/
+*.xcworkspace/
+*.xcsettings/
+*.xcuserdata/
+
+# Unreal 자동 생성 형상 파일
+*.opensdf
+*.sdf
+
+# 로그 파일
+*.log
+
+# 자동 저장된 리플레이
+*.replay
+
+# Crash 덤프
+Saved/Crashes/*
+*.dmp
+
+# 프로젝트 세팅 백업
+*.Backup.*
+
+# Mac 관련
+.DS_Store
+
+# Linux 관련
+*.so
+*.lock
+*.pid
+
+# Windows 관련
+Thumbs.db
+desktop.ini
+
+# 패키지 매니저 / 외부 플러그인
+Plugins/*/Intermediate/*
+Plugins/*/Binaries/*
+
+# 서드파티
+ThirdParty/*/Intermediate/*
+ThirdParty/*/Binaries/*
+
+# 언리얼 빌드 툴
+Build/Build.idb
+
+# Android 임시 파일
+*.apk
+*.obb
+*.ap_/
+
+# iOS 관련
+Payload/
+*.xcarchive
+*.ipa
+*.mobileprovision
+*.plist
+
+# CMake 빌드 산출물 (만약 CMake 사용하는 경우)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# NDK, Gradle 캐시
+.gradle/
+local.properties
+
+# JetBrains Rider
+.idea/
+*.suo
+*.user
+*.userprefs
+
+# VisualStudio Code
+.vscode/
+
+# Compiler 및 링크 산출물
+*.obj
+*.o
+*.linklib
+*.lib
+*.a
+*.lo
+*.la
+*.ilk
+*.pdb
+*.exp
+*.idb
+
+# 임시 파일
+*.tmp
+*.temp
+~$*
+
+# 기타
+*.log
+*.history
