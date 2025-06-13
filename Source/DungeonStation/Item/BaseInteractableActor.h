@@ -27,7 +27,7 @@ public:
 
 	// 아이템이 가질 텍스트 데이터
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interaction")
-	FText InterationText;
+	FText InteractionText;
 
 	// 플레이어 인식 범위
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components | Interaction")
