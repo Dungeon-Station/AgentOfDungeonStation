@@ -9,7 +9,7 @@
 
 class USphereComponent;
 
-UCLASS()
+UCLASS(Abstract)
 class DUNGEONSTATION_API ABaseInteractableActor : public AActor, public IInteractableInterface
 {
 	GENERATED_BODY()
@@ -22,20 +22,20 @@ public:
 	USceneComponent* DefaultSceneRoot;
 
 	// 아이템이 가질 Mesh
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* ItemMesh;
 
 	// 아이템이 가질 텍스트 데이터
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interaction")
 	FText InteractionText;
 
-	// 플레이어 인식 범위
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components | Interaction")
-	USphereComponent* DetectionSphere;
+	// 이 물체를 인식하고 하이라이팅 할 수 있는 최대 거리
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Interaction", meta = (ClampMin = "0.0"))
+	float DetectionDistance;
 
-	// 상호작용 가능 범위
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components | Interaction")
-	USphereComponent* InteractionSphere;
+	// 플레이어가 상호작용할 수 있는 최대 거리 (UI 표시 및 실행)
+	UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "Interaction", meta = (ClampMin = "0.0"))
+	float InteractionDistance;
 
 protected:
 	// 플레이어 인식 범위 안에 있는지 여부
@@ -43,21 +43,6 @@ protected:
 	// 상호작용 범위 안에 있는지 여부
 	bool bIsPlayerInInteractionRange;
 
-	// 이벤트 함수
-	// DetectionSphere 이벤트
-	UFUNCTION()
-	void OnDetectionSphereBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweeepResult);
-	UFUNCTION()
-	void OnDetectionSphereEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
-
-	// InteractionSphere 이벤트
-	UFUNCTION()
-	void OnInteractionSphereBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-	UFUNCTION()
-	void OnInteractionSphereEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
-
-	// UI 헬퍼 함수
-	void UpdateInteractionUI();
 public:
 	// 인터페이스 함수의 기본 함수 정의
 
@@ -65,13 +50,5 @@ public:
 	virtual void OnEndFocus_Implementation() override;
 	virtual FText GetInteractionText_Implementation() override;
 	virtual void Interact_Implementation() override;
-
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 
 };
