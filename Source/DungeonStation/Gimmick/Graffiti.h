@@ -4,8 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "Gimmick.h"
+#include "Components/DecalComponent.h"
 #include "Graffiti.generated.h"
 
+class UDecalComponent;
+class UBoxComponent;
 /**
  * 
  */
@@ -23,7 +26,11 @@ protected:
 public:
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void OnClickedGimmick(UPrimitiveComponent* ClickedComp, FKey ButtonPressed) override;
 private:
 	UPROPERTY(EditAnywhere, Category = "Components")
-	UStaticMeshComponent* GraffitiMesh;
+	UDecalComponent* GraffitiDecal;
+
+	UPROPERTY(EditAnywhere, Category = "Components")
+	UBoxComponent* GraffitiVolumeBox;
 };

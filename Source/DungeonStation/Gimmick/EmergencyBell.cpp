@@ -30,7 +30,7 @@ void AEmergencyBell::BeginPlay()
 	
 	if (BellMesh)
 	{
-		BellMesh->OnClicked.AddDynamic(this, &AEmergencyBell::OnBellPressed);
+		BellMesh->OnClicked.AddDynamic(this, &AEmergencyBell::OnClickedGimmick);
 	}
 }
 
@@ -41,8 +41,10 @@ void AEmergencyBell::Tick(float DeltaTime)
 
 }
 
-void AEmergencyBell::OnBellPressed(UPrimitiveComponent* ClickedComp, FKey ButtonPressed)
+void AEmergencyBell::OnClickedGimmick(UPrimitiveComponent* ClickedComp, FKey ButtonPressed)
 {
+	Super::OnClickedGimmick(ClickedComp, ButtonPressed);
+
 	if (!NormalBellSound || !AbnormalBellSound)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("EmergencyBell: Normal or AbNormal sound not set!"));

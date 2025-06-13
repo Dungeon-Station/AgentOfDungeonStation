@@ -25,3 +25,8 @@ void AGimmick::Tick(float DeltaTime)
 
 }
 
+void AGimmick::OnClickedGimmick(UPrimitiveComponent* ClickedComp, FKey ButtonPressed)
+{
+
+}
+
