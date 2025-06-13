@@ -23,4 +23,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION()
+	virtual void OnClickedGimmick(UPrimitiveComponent* ClickedComp, FKey ButtonPressed);
+
+	FORCEINLINE void SetIsGimmickCleared(bool bIsCleared) { bIsGimmickCleared = bIsCleared; }
+	FORCEINLINE bool GetIsGimmickCleared() const { return bIsGimmickCleared; }
+
+private:
+	bool bIsGimmickCleared = false;
+
 };
