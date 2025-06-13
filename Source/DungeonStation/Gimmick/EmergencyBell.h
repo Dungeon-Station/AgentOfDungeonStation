@@ -16,8 +16,7 @@ public:
 	// Sets default values for this actor's properties
 	AEmergencyBell();
 
-	UFUNCTION()
-	void OnBellPressed(UPrimitiveComponent* ClickedComp, FKey ButtonPressed);
+	virtual void OnClickedGimmick(UPrimitiveComponent* ClickedComp, FKey ButtonPressed) override;
 
 protected:
 	// Called when the game starts or when spawned
