@@ -32,6 +32,8 @@ void ACall::OnClickedGimmick(UPrimitiveComponent* ClickedComp, FKey ButtonPresse
 	{
 		if (!Gimmick->GetIsGimmickCleared())
 		{
+			if (FailSound)
+				UGameplayStatics::PlaySoundAtLocation(this, FailSound, GetActorLocation());
 			return;
 		}
 	}

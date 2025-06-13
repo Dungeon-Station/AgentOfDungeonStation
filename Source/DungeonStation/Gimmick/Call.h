@@ -46,4 +46,7 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Audio")
 	USoundBase* ClearSound;
+
+	UPROPERTY(EditAnywhere, Category = "Audio")
+	USoundBase* FailSound;
 };
