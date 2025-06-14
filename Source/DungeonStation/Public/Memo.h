@@ -4,11 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "../Gimmick/Gimmick.h"
+#include "../Item/BaseInteractableActor.h"
 #include "Memo.generated.h"
 
 UCLASS()
-class DUNGEONSTATION_API AMemo : public AActor
+class DUNGEONSTATION_API AMemo : public ABaseInteractableActor
 {
 	GENERATED_BODY()
 	
@@ -22,6 +22,8 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	virtual void Interact_Implementation() override;
 
 	UPROPERTY(VisibleDefaultsOnly)
 	UStaticMeshComponent* Memo = nullptr;

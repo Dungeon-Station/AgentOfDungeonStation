@@ -31,3 +31,7 @@ void AMemo::Tick(float DeltaTime)
 
 }
 
+void AMemo::Interact_Implementation()
+{
+}
+
