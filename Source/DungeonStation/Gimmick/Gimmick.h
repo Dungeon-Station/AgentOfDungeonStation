@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "../Item/BaseInteractableActor.h"
 #include "Gimmick.generated.h"
 
 UCLASS()
-class DUNGEONSTATION_API AGimmick : public AActor
+class DUNGEONSTATION_API AGimmick : public ABaseInteractableActor
 {
 	GENERATED_BODY()
 	
