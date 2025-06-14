@@ -31,6 +31,10 @@
 # VSCode History Files
 **/.history
 .vsconfig
+
+# github
+.github/copilot-instructions.md
+
 #################################
 # Miscellaneous Generated Files #
 #################################
