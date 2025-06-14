@@ -24,7 +24,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void Interact_Implementation() override;
-
+	virtual void OnBeginFocus_Implementation() override;
+	virtual void OnEndFocus_Implementation() override;
 	UPROPERTY(VisibleDefaultsOnly)
 	UStaticMeshComponent* Memo = nullptr;
 };
