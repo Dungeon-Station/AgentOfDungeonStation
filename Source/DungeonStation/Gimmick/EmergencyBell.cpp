@@ -74,7 +74,7 @@ void AEmergencyBell::Interact_Implementation()
 		NormalAudioComponent->FadeOut(3.0f, 0.0f);
 		AbnormalAudioComponent->FadeOut(3.0f, 0.0f);
 	}
-
+	SetIsGimmickCleared(true);
 }
 
 void AEmergencyBell::OnBeginFocus_Implementation()

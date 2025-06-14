@@ -4,10 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "../Interface/InteractableInterface.h"
+
 #include "ZombieCharacter.generated.h"
 
 UCLASS()
-class DUNGEONSTATION_API AZombieCharacter : public ACharacter
+class DUNGEONSTATION_API AZombieCharacter : public ACharacter, public IInteractableInterface
 {
 	GENERATED_BODY()
 
@@ -29,6 +31,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "ZombieCharacter")
 	void TriggerZombieAnimation();
 
+	virtual void OnBeginFocus_Implementation() override;
+	virtual void OnEndFocus_Implementation() override;
+	virtual FText GetInteractionText_Implementation() override;
+	virtual void Interact_Implementation() override;
 private:
 	bool bIsTriggered = false;
 	bool bIsNeckRotateFinished = false;

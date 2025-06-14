@@ -9,6 +9,7 @@ AZombieCharacter::AZombieCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	GetMesh()->SetCustomDepthStencilValue(2);
 }
 
 // Called when the game starts or when spawned
@@ -32,6 +33,31 @@ void AZombieCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 }
 
 void AZombieCharacter::TriggerZombieAnimation()
+{
+}
+
+void AZombieCharacter::OnBeginFocus_Implementation()
+{
+	if (GetMesh())
+	{
+		GetMesh()->SetRenderCustomDepth(true); // 하이라이트 켜기
+	}
+}
+
+void AZombieCharacter::OnEndFocus_Implementation()
+{
+	if (GetMesh())
+	{
+		GetMesh()->SetRenderCustomDepth(false); // 하이라이트 끄기
+	}
+}
+
+FText AZombieCharacter::GetInteractionText_Implementation()
+{
+	return FText();
+}
+
+void AZombieCharacter::Interact_Implementation()
 {
 }
 
