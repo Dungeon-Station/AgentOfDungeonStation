@@ -26,6 +26,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void Interact_Implementation() override;
+	virtual void OnBeginFocus_Implementation() override;
+	virtual void OnEndFocus_Implementation() override;
 private:
 	UPROPERTY(EditAnywhere, Category = "Audio")
 	USoundBase* NormalBellSound;

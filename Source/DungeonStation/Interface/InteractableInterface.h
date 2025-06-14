@@ -7,7 +7,7 @@
 #include "InteractableInterface.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE(MinimalAPI)
+UINTERFACE(BlueprintType, Blueprintable,MinimalAPI)
 class UInteractableInterface : public UInterface
 {
 	GENERATED_BODY()
@@ -37,4 +37,5 @@ public:
 	// 실제 상호작용 실행
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interactable")
 	void Interact();
+
 };
