@@ -27,10 +27,17 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void OnClickedGimmick(UPrimitiveComponent* ClickedComp, FKey ButtonPressed) override;
+
+	virtual void Interact_Implementation() override;
+	virtual void OnBeginFocus_Implementation() override;
+	virtual void OnEndFocus_Implementation() override;
 private:
 	UPROPERTY(EditAnywhere, Category = "Components")
 	UDecalComponent* GraffitiDecal;
 
 	UPROPERTY(EditAnywhere, Category = "Components")
 	UBoxComponent* GraffitiVolumeBox;
+
+	UPROPERTY(EditAnywhere, Category = "Components")
+	UStaticMeshComponent* Plane;
 };

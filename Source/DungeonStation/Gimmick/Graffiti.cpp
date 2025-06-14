@@ -7,15 +7,20 @@
 
 AGraffiti::AGraffiti()
 {
+	Plane = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Base Plane"));
+	RootComponent = Plane;
+
 	GraffitiDecal = CreateDefaultSubobject<UDecalComponent>(TEXT("GraffitiDecal"));
-	RootComponent = GraffitiDecal;
 	GraffitiDecal->DecalSize = FVector(10, 20, 15);
+	GraffitiDecal->SetupAttachment(Plane);
 
 	GraffitiVolumeBox = CreateDefaultSubobject<UBoxComponent>(TEXT("GraffitiVolumeBox"));
 	GraffitiVolumeBox->SetupAttachment(RootComponent);
 	GraffitiVolumeBox->SetBoxExtent(FVector(10, 20, 15));
 	GraffitiVolumeBox->SetCollisionProfileName(TEXT("BlockAll"));
-	GraffitiVolumeBox->bHiddenInGame = true;
+	GraffitiVolumeBox->bHiddenInGame = false;
+
+	Plane->SetCustomDepthStencilValue(2);
 
 }
 
@@ -41,4 +46,26 @@ void AGraffiti::OnClickedGimmick(UPrimitiveComponent* ClickedComp, FKey ButtonPr
 
 	SetIsGimmickCleared(true);
 	GraffitiDecal->SetFadeOut(0.0f, 1.0f);
+}
+
+void AGraffiti::Interact_Implementation()
+{
+	SetIsGimmickCleared(true);
+	GraffitiDecal->SetFadeOut(0.0f, 1.0f);
+}
+
+void AGraffiti::OnBeginFocus_Implementation()
+{
+	if (Plane)
+	{
+		Plane->SetRenderCustomDepth(true); // 하이라이트 켜기
+	}
+}
+
+void AGraffiti::OnEndFocus_Implementation()
+{
+	if (Plane)
+	{
+		Plane->SetRenderCustomDepth(false); // 하이라이트 끄기
+	}
 }
