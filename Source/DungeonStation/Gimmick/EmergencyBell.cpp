@@ -45,6 +45,8 @@ void AEmergencyBell::Tick(float DeltaTime)
 
 void AEmergencyBell::Interact_Implementation()
 {
+	if (GetIsGimmickCleared())
+		return;
 
 	if (!NormalBellSound || !AbnormalBellSound)
 	{

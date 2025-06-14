@@ -50,6 +50,8 @@ void AGraffiti::OnClickedGimmick(UPrimitiveComponent* ClickedComp, FKey ButtonPr
 
 void AGraffiti::Interact_Implementation()
 {
+	if (GetIsGimmickCleared())
+		return;
 	SetIsGimmickCleared(true);
 	GraffitiDecal->SetFadeOut(0.0f, 1.0f);
 }

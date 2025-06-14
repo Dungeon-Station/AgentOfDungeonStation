@@ -13,6 +13,9 @@ class ADungeonStationGameMode : public AGameModeBase
 
 public:
 	ADungeonStationGameMode();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 ClearStage = 0;
 };
 
 

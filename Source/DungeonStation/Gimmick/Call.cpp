@@ -5,7 +5,7 @@
 #include "Components/BoxComponent.h"
 #include "Train/TrainManager.h"
 #include "Kismet/GameplayStatics.h"
-
+#include "DungeonStation/DungeonStationGameMode.h"
 ACall::ACall()
 {
 	CallMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Call"));
@@ -26,6 +26,8 @@ void ACall::Tick(float DeltaTime)
 
 void ACall::Interact_Implementation()
 {
+	if (GetIsGimmickCleared())
+		return;
 	for (auto Gimmick : Gimmicks)
 	{
 		if (!Gimmick->GetIsGimmickCleared())
@@ -38,6 +40,14 @@ void ACall::Interact_Implementation()
 	if (ClearSound)
 		UGameplayStatics::PlaySoundAtLocation(this, ClearSound, GetActorLocation());
 	TrainManager->ClearStage();
+	if (AGameModeBase* BaseGM = GetWorld()->GetAuthGameMode())
+	{
+		if (ADungeonStationGameMode* GM = Cast<ADungeonStationGameMode>(BaseGM))
+		{
+			GM->ClearStage++;
+		}
+	}
+	SetIsGimmickCleared(true);
 }
 
 void ACall::OnBeginFocus_Implementation()
@@ -58,16 +68,5 @@ void ACall::OnEndFocus_Implementation()
 
 void ACall::OnClickedGimmick(UPrimitiveComponent* ClickedComp, FKey ButtonPressed)
 {
-	for (auto Gimmick : Gimmicks)
-	{
-		if (!Gimmick->GetIsGimmickCleared())
-		{
-			if (FailSound)
-				UGameplayStatics::PlaySoundAtLocation(this, FailSound, GetActorLocation());
-			return;
-		}
-	}
-	if (ClearSound)
-		UGameplayStatics::PlaySoundAtLocation(this, ClearSound, GetActorLocation());
-	TrainManager->ClearStage();
+
 }
