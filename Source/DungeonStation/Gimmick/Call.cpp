@@ -11,9 +11,7 @@ ACall::ACall()
 	CallMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Call"));
 	SetRootComponent(CallMesh);
 
-	Trigger = CreateDefaultSubobject<UBoxComponent>(TEXT("Trigger"));
-	Trigger->SetupAttachment(CallMesh);
-
+	CallMesh->SetCustomDepthStencilValue(2);
 }
 
 
@@ -24,6 +22,38 @@ void ACall::BeginPlay()
 
 void ACall::Tick(float DeltaTime)
 {
+}
+
+void ACall::Interact_Implementation()
+{
+	for (auto Gimmick : Gimmicks)
+	{
+		if (!Gimmick->GetIsGimmickCleared())
+		{
+			if (FailSound)
+				UGameplayStatics::PlaySoundAtLocation(this, FailSound, GetActorLocation());
+			return;
+		}
+	}
+	if (ClearSound)
+		UGameplayStatics::PlaySoundAtLocation(this, ClearSound, GetActorLocation());
+	TrainManager->ClearStage();
+}
+
+void ACall::OnBeginFocus_Implementation()
+{
+	if (CallMesh)
+	{
+		CallMesh->SetRenderCustomDepth(true); // 하이라이트 켜기
+	}
+}
+
+void ACall::OnEndFocus_Implementation()
+{
+	if (CallMesh)
+	{
+		CallMesh->SetRenderCustomDepth(false); // 하이라이트 켜기
+	}
 }
 
 void ACall::OnClickedGimmick(UPrimitiveComponent* ClickedComp, FKey ButtonPressed)

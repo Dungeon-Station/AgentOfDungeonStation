@@ -28,12 +28,13 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	virtual void Interact_Implementation() override;
+	virtual void OnBeginFocus_Implementation() override;
+	virtual void OnEndFocus_Implementation() override;
 public:
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* CallMesh = nullptr;
-
-	UPROPERTY()
-	UBoxComponent* Trigger;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<AGimmick*> Gimmicks;
