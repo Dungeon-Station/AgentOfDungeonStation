@@ -9,12 +9,12 @@
 
 class USphereComponent;
 
-UCLASS(Abstract)
+UCLASS(BlueprintType, Blueprintable)
 class DUNGEONSTATION_API ABaseInteractableActor : public AActor, public IInteractableInterface
 {
 	GENERATED_BODY()
 	
-public:	
+	public:	
 	// Sets default values for this actor's properties
 	ABaseInteractableActor();
 
