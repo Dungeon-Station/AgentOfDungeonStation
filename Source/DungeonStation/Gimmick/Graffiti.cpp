@@ -18,7 +18,7 @@ AGraffiti::AGraffiti()
 	GraffitiVolumeBox->SetupAttachment(RootComponent);
 	GraffitiVolumeBox->SetBoxExtent(FVector(10, 20, 15));
 	GraffitiVolumeBox->SetCollisionProfileName(TEXT("BlockAll"));
-	GraffitiVolumeBox->bHiddenInGame = false;
+	GraffitiVolumeBox->bHiddenInGame = true;
 
 	Plane->SetCustomDepthStencilValue(2);
 
