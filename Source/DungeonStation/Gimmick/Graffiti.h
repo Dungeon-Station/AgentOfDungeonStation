@@ -40,4 +40,8 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Components")
 	UStaticMeshComponent* Plane;
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool GhostTrigger = false;
 };

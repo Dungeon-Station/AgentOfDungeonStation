@@ -54,6 +54,7 @@ void AGraffiti::Interact_Implementation()
 		return;
 	SetIsGimmickCleared(true);
 	GraffitiDecal->SetFadeOut(0.0f, 1.0f);
+	GhostTrigger = true;
 }
 
 void AGraffiti::OnBeginFocus_Implementation()
