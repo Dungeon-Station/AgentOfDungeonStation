@@ -30,7 +30,7 @@ public:
 	FORCEINLINE void SetIsGimmickCleared(bool bIsCleared) { bIsGimmickCleared = bIsCleared; }
 	FORCEINLINE bool GetIsGimmickCleared() const { return bIsGimmickCleared; }
 
-private:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interaction")
 	bool bIsGimmickCleared = false;
 
 };
